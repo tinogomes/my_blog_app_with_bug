@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + "/../test_helper"
 
 class PostTest < ActiveSupport::TestCase
-  should "be valid" do
-    assert Post.new.valid?
-  end
+  context "A Post model" do
+    should_validate_presence_of :title, :body
+  end # context "A Post model"
+  
 end
