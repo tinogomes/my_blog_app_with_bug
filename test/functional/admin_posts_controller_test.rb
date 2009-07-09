@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + "/../test_helper"
 
-class PostsControllerTest < ActionController::TestCase
+class Admin::PostsControllerTest < ActionController::TestCase
   context "PostsController" do
 
     context "index action" do
@@ -34,7 +34,7 @@ class PostsControllerTest < ActionController::TestCase
       should "redirect when model is valid" do
         Post.any_instance.stubs(:valid?).returns(true)
         post :create
-        assert_redirected_to post_url(assigns(:post))
+        assert_redirected_to admin_post_url(assigns(:post))
       end
     end
 
@@ -55,7 +55,7 @@ class PostsControllerTest < ActionController::TestCase
       should "redirect when model is valid" do
         Post.any_instance.stubs(:valid?).returns(true)
         put :update, :id => Post.first
-        assert_redirected_to post_url(assigns(:post))
+        assert_redirected_to admin_post_url(assigns(:post))
       end
     end
 
@@ -63,7 +63,7 @@ class PostsControllerTest < ActionController::TestCase
       should "destroy model and redirect to index action" do
         post = Post.first
         delete :destroy, :id => post
-        assert_redirected_to posts_url
+        assert_redirected_to admin_posts_url
         assert !Post.exists?(post.id)
       end
     end

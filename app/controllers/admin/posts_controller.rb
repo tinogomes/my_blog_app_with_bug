@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Admin::PostsController < ApplicationController
   def index
     @posts = Post.all
   end
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     if @post.save
       flash[:notice] = "Successfully created post."
-      redirect_to @post
+      redirect_to admin_post_path(@post)
     else
       render :action => 'new'
     end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       flash[:notice] = "Successfully updated post."
-      redirect_to @post
+      redirect_to admin_post_path(@post)
     else
       render :action => 'edit'
     end
@@ -39,6 +39,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Successfully destroyed post."
-    redirect_to posts_url
+    redirect_to admin_posts_url
   end
 end

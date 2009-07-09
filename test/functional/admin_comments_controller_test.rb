@@ -1,6 +1,6 @@
-require 'test_helper'
+require File.dirname(__FILE__) + "/../test_helper"
 
-class CommentsControllerTest < ActionController::TestCase
+class Admin::CommentsControllerTest < ActionController::TestCase
   context "index action" do
     should "render index template" do
       get :index
@@ -32,7 +32,7 @@ class CommentsControllerTest < ActionController::TestCase
     should "redirect when model is valid" do
       Comment.any_instance.stubs(:valid?).returns(true)
       post :create
-      assert_redirected_to comment_url(assigns(:comment))
+      assert_redirected_to admin_comment_url(assigns(:comment))
     end
   end
   
@@ -53,7 +53,7 @@ class CommentsControllerTest < ActionController::TestCase
     should "redirect when model is valid" do
       Comment.any_instance.stubs(:valid?).returns(true)
       put :update, :id => Comment.first
-      assert_redirected_to comment_url(assigns(:comment))
+      assert_redirected_to admin_comment_url(assigns(:comment))
     end
   end
   
@@ -61,7 +61,7 @@ class CommentsControllerTest < ActionController::TestCase
     should "destroy model and redirect to index action" do
       comment = Comment.first
       delete :destroy, :id => comment
-      assert_redirected_to comments_url
+      assert_redirected_to admin_comments_url
       assert !Comment.exists?(comment.id)
     end
   end
