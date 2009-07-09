@@ -1,0 +1,28 @@
+<% title "Comment" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @comment.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @comment.email %>
+</p>
+<p>
+  <strong>Site:</strong>
+  <%=h @comment.site %>
+</p>
+<p>
+  <strong>Body:</strong>
+  <%=h @comment.body %>
+</p>
+<p>
+  <strong>Post:</strong>
+  <%=h @comment.post_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_comment_path(@comment) %> |
+  <%= link_to "Destroy", @comment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", comments_path %>
+</p>
