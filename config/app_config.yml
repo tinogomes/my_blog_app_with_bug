@@ -1,0 +1,5 @@
+development:
+  domain: localhost:3000
+
+test:
+  domain: test.host
