@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + "/../test_helper"
 
 class CommentTest < ActiveSupport::TestCase
-  should "be valid" do
-    assert Comment.new.valid?
-  end
+  context "A Comment model" do
+    should_belong_to :post
+  end # context "A Comment model"
 end
